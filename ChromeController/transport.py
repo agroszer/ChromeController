@@ -347,7 +347,7 @@ class ChromeExecutionManager():
 				stdout, stderr = self.cr_proc.communicate()
 				raise cr_exceptions.ChromeDiedError("Chromium process died unexpectedly! Don't know "
 					"how to continue!\n	Chromium stdout: {}\n	Chromium stderr: {}".format(stdout.decode("utf-8"), stderr.decode("utf-8")))
-			except ValueError:
+			except (ValueError, AttributeError):
 				# The communcation pipes can go away if the process has exited.
 				# If so, ignore the resulting error.
 				raise cr_exceptions.ChromeDiedError("Chromium process died unexpectedly! Don't know how to continue!")
