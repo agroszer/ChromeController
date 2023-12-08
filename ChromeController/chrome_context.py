@@ -1,7 +1,6 @@
 
 import logging
 import contextlib
-import traceback
 
 from .manager import ChromeRemoteDebugInterface
 
@@ -22,10 +21,7 @@ def ChromeContext(*args, **kwargs):
 		log.info("Entering chrome context")
 		yield chrome_instance
 	except Exception as e:
-
-		log.error("Exception in chrome context!")
-		for line in traceback.format_exc().split("\n"):
-			log.error(line)
+		log.exceptions("Exception in chrome context!")
 		raise e
 
 	finally:
