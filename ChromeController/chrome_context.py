@@ -21,7 +21,7 @@ def ChromeContext(*args, **kwargs):
 		log.info("Entering chrome context")
 		yield chrome_instance
 	except Exception as e:
-		log.exceptions("Exception in chrome context!")
+		log.exception("Exception in chrome context!")
 		raise e
 
 	finally:
